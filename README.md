@@ -1,7 +1,7 @@
 # FDC Data Exporter
 
 ## Video Introductorio
-https://github.com/user-attachments/assets/intro-fdcx
+https://youtu.be/1LKhQqlxC5Y
 
 ## Objetivo
 Dar una solución rápida a profesionales que se dedican a la validación de etiquetados nutricionales, accediendo a la FDC (Food Data Central) para poder encontrar información suficiente y relevante para sus documentaciones. Así también los datos obtenidos pueden ser guardados y usados como guía para la elaboración de otros etiquetados. 
