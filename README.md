@@ -53,13 +53,13 @@ server.port=TU_PUERTO
 
 Una vez que la aplicación esté corriendo, abre tu navegador en las siguientes direcciones:
 
-- **Inicio (Buscador):** [TU_URL/](TU_URL/)
+- **Inicio (Buscador):** [TU_PUERTO/](TU_PUERTO/)
   - Aquí puedes buscar alimentos por **ID** o por **Nombre** (usando términos en inglés, ej: "Beef", "Apple").
-- **Mi Base de Datos:** [TU_URL/my-db](TU_URL/my-db)
+- **Mi Base de Datos:** [TU_PUERTO/my-db](TU_PUERTO/my-db)
   - Visualiza, gestiona y elimina los alimentos que has guardado localmente.
-- **Historial:** [TU_URL/history](TU_URL/history)
+- **Historial:** [TU_PUERTO/history](TU_PUERTO/history)
   - Registro de auditoría de las acciones realizadas en el sistema.
-- **Configuración:** [TU_URL/settings](TU_URL/settings)
+- **Configuración:** [TU_PUERTO/settings](TU_PUERTO/settings)
   - Vista de parámetros de configuración (credenciales enmascaradas).
 
 ### Flujo de Uso Típico
