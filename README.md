@@ -1,22 +1,25 @@
 # FDC Data Exporter
 
-## 🎯 Objetivo
+## Video Introductorio
+https://github.com/user-attachments/assets/intro-fdcx
+
+## Objetivo
 Dar una solución rápida a profesionales que se dedican a la validación de etiquetados nutricionales, accediendo a la FDC (Food Data Central) para poder encontrar información suficiente y relevante para sus documentaciones. Así también los datos obtenidos pueden ser guardados y usados como guía para la elaboración de otros etiquetados. 
 
 El objetivo es poder llegar a expandir el acceso rápido a la información no solo a pequeños emprendedores, si no que también a usuarios que puedan ser futuros fiscalizadores del cumplimiento de los etiquetados nutricionales.
 
-## 📚 Documentación Técnica
+## Documentación Técnica
 Para detalles específicos sobre la estructura de datos y la integración con la API, consulta los siguientes documentos:
 - **Datos y Estructura:** [datos-readme.md](datos-readme.md)
 - **Lógica de API:** [api-readme.md](api-readme.md)
 
-## 📋 Requisitos del Sistema
+## Requisitos del Sistema
 Para ejecutar este programa necesitas tener instalado:
 - **Java JDK 21**
 - **Maven** (para gestión de dependencias y construcción)
 - **MySQL Server** (Base de datos)
 
-## ⚙️ Configuración
+## Configuración
 
 > **⚠️ IMPORTANTE:** Debes configurar tus propias credenciales antes de ejecutar el proyecto.
 
@@ -37,7 +40,7 @@ La aplicación web se despliega en tu puerto configurado.
 server.port=TU_PUERTO
 ```
 
-## 🚀 Comandos para Correr el Programa
+## Comandos para Correr el Programa
 
 1. **Compilar el proyecto:**
    ```bash
@@ -49,7 +52,7 @@ server.port=TU_PUERTO
    mvn spring-boot:run
    ```
 
-## 🖥️ Accesos y Uso
+## Accesos y Uso
 
 Una vez que la aplicación esté corriendo, abre tu navegador en las siguientes direcciones:
 
@@ -70,7 +73,7 @@ Una vez que la aplicación esté corriendo, abre tu navegador en las siguientes 
    - **Descargar Imagen:** Genera una imagen de la tabla nutricional.
    - **Descargar CSV:** Exporta los datos en formato plano.
 
-## 🔮 Mejoras a Futuro
+## Mejoras a Futuro
 1. Permitir modificación libre de token de acceso FDC, URL/usuario/password de la base de datos desde la interfaz.
 2. Mejora en la traducción usando un diccionario interno más extenso y dinámico.
 3. Búsqueda de alimento por contenido nutricional para encontrar coincidencias específicas.
