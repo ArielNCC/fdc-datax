@@ -47,7 +47,7 @@ Entidades que mapean las tablas de la base de datos:
 
 ---
 
-## ���️ Manejo de Errores
+## Manejo de Errores
 La aplicación utiliza `GlobalExceptionHandler` para capturar y gestionar excepciones como:
 - Fallos de conexión con la API (`FdcApiException`).
 - Alimentos no encontrados (`FoodNotFoundException`).
