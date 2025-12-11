@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultados de Búsqueda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .nutrition-label {
+            border: 2px solid black;
+            padding: 10px;
+            width: 100%;
+            max-width: 350px;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+        .nutrition-header {
+            border-bottom: 10px solid black;
+            padding-bottom: 5px;
+        }
+        .nutrition-title {
+            font-weight: 900;
+            font-size: 30px;
+            margin: 0;
+        }
+        .nutrition-row {
+            border-bottom: 1px solid black;
+            padding: 5px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .nutrition-row.bold {
+            font-weight: bold;
+            border-bottom: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">FDC Data Exporter</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="/saved">Guardados</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Resultados de la Búsqueda</h2>
+    
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    <div th:if="${message}" class="alert alert-info" th:text="${message}"></div>
+
+    <div th:if="${foods != null and !foods.empty}">
+        <ul class="nav nav-tabs" id="resultTabs" role="tablist">
+            <li class="nav-item" th:each="food, iterStat : ${foods}" role="presentation">
+                <button class="nav-link" th:classappend="${iterStat.first} ? 'active'" 
+                        th:id="'tab-' + ${food.fdcId}" data-bs-toggle="tab" 
+                        th:data-bs-target="'#content-' + ${food.fdcId}" 
+                        type="button" role="tab" 
+                        th:text="${#strings.abbreviate(food.description, 20)}"></button>
+            </li>
+        </ul>
+        
+        <div class="tab-content p-4 border border-top-0 bg-light" id="resultTabsContent">
+            <div th:each="food, iterStat : ${foods}" class="tab-pane fade" 
+                 th:classappend="${iterStat.first} ? 'show active'" 
+                 th:id="'content-' + ${food.fdcId}" role="tabpanel">
+                
+                <div class="row">
+                    <div class="col-md-7">
+                        <h3><span th:text="${food.description}"></span></h3>
+                        <p><strong>Marca:</strong> <span th:text="${food.brandOwner}"></span></p>
+                        <p><strong>FDC ID:</strong> <span th:text="${food.fdcId}"></span></p>
+                        
+                        <form th:unless="${isSavedView}" th:action="@{/save/{id}(id=${food.fdcId})}" method="post" class="mt-3">
+                            <button type="submit" class="btn btn-success">Guardar en Base de Datos</button>
+                        </form>
+                        <a th:if="${isSavedView}" href="/saved" class="btn btn-secondary mt-3">Volver a la lista</a>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="nutrition-label">
+                            <div class="nutrition-header">
+                                <h1 class="nutrition-title">Información Nutricional</h1>
+                                <p>Porción: 100g</p>
+                            </div>
+                            <div class="nutrition-row bold">
+                                <span>Nutriente</span>
+                                <span>Cantidad</span>
+                            </div>
+                            <div th:each="nutrient : ${food.nutrients}" class="nutrition-row">
+                                <span th:text="${nutrient.name}"></span>
+                                <span>
+                                    <span th:text="${nutrient.value}"></span>
+                                    <span th:text="${nutrient.unitName}"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

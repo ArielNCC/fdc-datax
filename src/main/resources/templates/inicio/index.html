@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FDC Data Exporter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">FDC Data Exporter</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="/">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="/my-db">Mi BD</a></li>
+                <li class="nav-item"><a class="nav-link" href="/history">Historial</a></li>
+                <li class="nav-item"><a class="nav-link" href="/settings">Configuración</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Buscador de Etiquetados FDC</h1>
+    
+    <ul class="nav nav-tabs" id="searchTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="id-tab" data-bs-toggle="tab" data-bs-target="#search-id" type="button" role="tab">Búsqueda por ID</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="name-tab" data-bs-toggle="tab" data-bs-target="#search-name" type="button" role="tab">Búsqueda por Nombre</button>
+        </li>
+    </ul>
+    
+    <div class="tab-content p-4 border border-top-0 bg-light" id="searchTabsContent">
+        <div class="tab-pane fade show active" id="search-id" role="tabpanel">
+            <form action="/search" method="get">
+                <div class="mb-3">
+                    <label for="id" class="form-label">ID del Alimento (FDC ID)</label>
+                    <input type="number" class="form-control" id="id" name="id" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="search-name" role="tabpanel">
+            <form action="/search" method="get">
+                <div class="mb-3">
+                    <label for="query" class="form-label">Nombre del Alimento</label>
+                    <input type="text" class="form-control" id="query" name="query" required placeholder="Ej: Apple, Milk, Cheese">
+                    <div class="form-text text-muted">
+                        <i class="bi bi-info-circle"></i> Por favor, ingrese el término de búsqueda en <strong>Inglés</strong>.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

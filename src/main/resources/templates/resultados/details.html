@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalles del Alimento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        .nutrition-label {
+            border: 2px solid black;
+            padding: 10px;
+            width: 100%;
+            max-width: 350px;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+        .nutrition-header {
+            border-bottom: 10px solid black;
+            padding-bottom: 5px;
+        }
+        .nutrition-title {
+            font-weight: 900;
+            font-size: 30px;
+            margin: 0;
+        }
+        .nutrition-row {
+            border-bottom: 1px solid black;
+            padding: 5px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .nutrition-row.bold {
+            font-weight: bold;
+            border-bottom: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">FDC Data Exporter</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="/my-db">Mi BD</a></li>
+                <li class="nav-item"><a class="nav-link" href="/history">Historial</a></li>
+                <li class="nav-item"><a class="nav-link" href="/settings">Configuración</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-7">
+            <h2 class="mb-3">Detalles del Alimento</h2>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title" th:text="${food.description}"></h3>
+                    <p class="card-text"><strong>Marca:</strong> <span th:text="${food.brandOwner}"></span></p>
+                    <p class="card-text"><strong>FDC ID:</strong> <span th:text="${food.fdcId}"></span></p>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-block">
+                <form th:unless="${isSaved}" th:action="@{/save/{id}(id=${food.fdcId})}" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-success">Guardar en BD</button>
+                </form>
+                
+                <a th:href="@{/download/csv/{id}(id=${food.fdcId})}" class="btn btn-info text-white">Descargar CSV</a>
+                <button onclick="downloadImage()" class="btn btn-warning text-white">Descargar Imagen</button>
+                
+                <form th:if="${isSaved}" th:action="@{/my-db/delete/{id}(id=${food.fdcId})}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este alimento?');" class="d-inline">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+
+                <a href="javascript:history.back()" class="btn btn-secondary">Volver</a>
+            </div>
+        </div>
+        
+        <div class="col-md-5">
+            <div id="nutrition-label-container" class="nutrition-label">
+                <div class="nutrition-header">
+                    <h1 class="nutrition-title">Información Nutricional</h1>
+                    <p>Porción: 100g</p>
+                </div>
+                <div class="nutrition-row bold">
+                    <span>Nutriente</span>
+                    <span>Cantidad</span>
+                </div>
+                <div th:each="nutrient : ${food.nutrients}" class="nutrition-row">
+                    <span th:text="${nutrient.name}"></span>
+                    <span>
+                        <span th:text="${nutrient.value}"></span>
+                        <span th:text="${nutrient.unitName}"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function downloadImage() {
+        const element = document.getElementById("nutrition-label-container");
+        html2canvas(element).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'nutrition-label.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

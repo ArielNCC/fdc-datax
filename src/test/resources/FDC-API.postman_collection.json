@@ -1,0 +1,142 @@
+{
+  "info": {
+    "name": "FDC API",
+    "description": "Colección de peticiones para probar la API de Food Data Central",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "TU_URL/api/foods/health",
+          "protocol": "http",
+          "host": ["TU_HOST"],
+          "port": "TU_PUERTO",
+          "path": ["api", "foods", "health"]
+        },
+        "description": "Verifica que el servicio esté activo"
+      }
+    },
+    {
+      "name": "Buscar Alimentos - Apple",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "TU_URL/api/foods?query=apple",
+          "protocol": "http",
+          "host": ["TU_HOST"],
+          "port": "TU_PUERTO",
+          "path": ["api", "foods"],
+          "query": [
+            {
+              "key": "query",
+              "value": "apple",
+              "description": "Término de búsqueda"
+            }
+          ]
+        },
+        "description": "Busca alimentos que contengan 'apple'"
+      }
+    },
+    {
+      "name": "Buscar Alimentos - Cheese",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "TU_URL/api/foods?query=cheese",
+          "protocol": "http",
+          "host": ["TU_HOST"],
+          "port": "TU_PUERTO",
+          "path": ["api", "foods"],
+          "query": [
+            {
+              "key": "query",
+              "value": "cheese",
+              "description": "Término de búsqueda"
+            }
+          ]
+        },
+        "description": "Busca alimentos que contengan 'cheese'"
+      }
+    },
+    {
+      "name": "Buscar Alimentos - Chicken",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "TU_URL/api/foods?query=chicken",
+          "protocol": "http",
+          "host": ["TU_HOST"],
+          "port": "TU_PUERTO",
+          "path": ["api", "foods"],
+          "query": [
+            {
+              "key": "query",
+              "value": "chicken",
+              "description": "Término de búsqueda"
+            }
+          ]
+        },
+        "description": "Busca alimentos que contengan 'chicken'"
+      }
+    },
+    {
+      "name": "Obtener Alimento por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "TU_URL/api/foods/2346467",
+          "protocol": "http",
+          "host": ["TU_HOST"],
+          "port": "TU_PUERTO",
+          "path": ["api", "foods", "2346467"]
+        },
+        "description": "Obtiene información detallada de un alimento específico por su ID de FDC. Primero realiza una búsqueda y usa uno de los fdcId devueltos."
+      }
+    },
+    {
+      "name": "Buscar Alimentos - Query Vacía (Error)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "TU_URL/api/foods?query=",
+          "protocol": "http",
+          "host": ["TU_HOST"],
+          "port": "TU_PUERTO",
+          "path": ["api", "foods"],
+          "query": [
+            {
+              "key": "query",
+              "value": "",
+              "description": "Query vacía - debería devolver error 400"
+            }
+          ]
+        },
+        "description": "Prueba de error: búsqueda con query vacía"
+      }
+    },
+    {
+      "name": "Obtener Alimento - ID Inválido (Error)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "TU_URL/api/foods/999999999999",
+          "protocol": "http",
+          "host": ["TU_HOST"],
+          "port": "TU_PUERTO",
+          "path": ["api", "foods", "999999999999"]
+        },
+        "description": "Prueba de error: ID que no existe - debería devolver error 404"
+      }
+    }
+  ]
+}
