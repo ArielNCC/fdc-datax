@@ -1,8 +1,5 @@
 # FDC Data Exporter
 
-## ⚠️ Nota de Seguridad
-**Este repositorio NO contiene credenciales reales.** Antes de ejecutar el proyecto, debes configurar tus propias credenciales. Consulta [SECURITY.md](SECURITY.md) para instrucciones detalladas.
-
 ## 🎯 Objetivo
 Dar una solución rápida a profesionales que se dedican a la validación de etiquetados nutricionales, accediendo a la FDC (Food Data Central) para poder encontrar información suficiente y relevante para sus documentaciones. Así también los datos obtenidos pueden ser guardados y usados como guía para la elaboración de otros etiquetados. 
 
