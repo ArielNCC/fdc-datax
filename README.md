@@ -18,7 +18,7 @@ Para ejecutar este programa necesitas tener instalado:
 
 ## ⚙️ Configuración
 
-> **⚠️ IMPORTANTE:** Debes configurar tus propias credenciales antes de ejecutar el proyecto. Ver [SECURITY.md](SECURITY.md) para instrucciones completas.
+> **⚠️ IMPORTANTE:** Debes configurar tus propias credenciales antes de ejecutar el proyecto.
 
 ### Base de Datos y Puertos
 La configuración principal se encuentra en `src/main/resources/application.properties`.
