@@ -1,10 +1,10 @@
-# ��� Estructura de Datos y Persistencia
+# Estructura de Datos y Persistencia
 
 Este documento detalla cómo se estructuran los datos obtenidos de la API FDC y cómo se almacenan en la base de datos local.
 
 ---
 
-## ��� Transformación de Datos
+## Transformación de Datos
 
 El flujo de datos implica una transformación desde el formato JSON de la API externa hacia el modelo relacional de nuestra base de datos.
 
@@ -21,7 +21,7 @@ Simplificamos la estructura para uso interno de la aplicación.
     - `brandOwner`: Marca.
     - `nutrients`: Lista de objetos `Nutrient`.
 
-### 🔍 Ejemplo de Transformación JSON
+### Ejemplo de Transformación JSON
 
 **1. JSON Recibido de FDC (Entrada):**
 *Nota: Contiene muchos metadatos técnicos y campos adicionales no utilizados.*
@@ -95,6 +95,6 @@ Los datos seleccionados por el usuario son persistidos mediante `DataService`.
 
 ---
 
-## ��� Notas sobre Persistencia
+## Notas sobre Persistencia
 - **Idioma:** Los datos se guardan en la base de datos en su idioma original (Inglés) para mantener la integridad con la fuente oficial.
 - **Traducción:** La visualización en español se realiza en tiempo de ejecución mediante `TranslationService`, sin alterar los datos almacenados.
