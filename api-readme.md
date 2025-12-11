@@ -1,14 +1,15 @@
-# ÌøóÔ∏è Arquitectura de la Aplicaci√≥n FDC API
+# Arquitectura de la Aplicaci√≥n FDC API
 
 Este documento describe la arquitectura t√©cnica de la aplicaci√≥n, detallando el flujo de datos y las responsabilidades de los componentes clave.
+Para m√°s informaci√≥n sobre el api-key o limites de acceso a los datos de la FDC (Food Data Central) de la USDA, consulta su p√°gina web.
 
 ---
 
-## Ì≥ê Arquitectura General (MVC)
+## Arquitectura General (MVC)
 
 La aplicaci√≥n sigue el patr√≥n **Model-View-Controller (MVC)** con una clara separaci√≥n de responsabilidades entre la obtenci√≥n de datos externos y la persistencia local.
 
-### Ì¥Ñ Flujo de Datos
+### Flujo de Datos
 
 1.  **Lectura (API Externa):**
     *   **Clase:** `FdcClient` (`com.fdcapi.client`)
@@ -26,7 +27,7 @@ La aplicaci√≥n sigue el patr√≥n **Model-View-Controller (MVC)** con una clara se
 
 ---
 
-## Ì∑© Componentes Principales
+## Componentes Principales
 
 ### 1. Capa de Controlador (`WebController`)
 Maneja las interacciones del usuario y la navegaci√≥n entre vistas.
@@ -46,7 +47,7 @@ Entidades que mapean las tablas de la base de datos:
 
 ---
 
-## Ìª†Ô∏è Manejo de Errores
+## ÔøΩÔøΩÔøΩÔ∏è Manejo de Errores
 La aplicaci√≥n utiliza `GlobalExceptionHandler` para capturar y gestionar excepciones como:
 - Fallos de conexi√≥n con la API (`FdcApiException`).
 - Alimentos no encontrados (`FoodNotFoundException`).
