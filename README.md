@@ -7,7 +7,6 @@ El objetivo es poder llegar a expandir el acceso rápido a la información no so
 
 ## 📚 Documentación Técnica
 Para detalles específicos sobre la estructura de datos y la integración con la API, consulta los siguientes documentos:
-- **Configuración de Seguridad:** [SECURITY.md](SECURITY.md) ⚠️ **Lee esto primero**
 - **Datos y Estructura:** [datos-readme.md](datos-readme.md)
 - **Lógica de API:** [api-readme.md](api-readme.md)
 
